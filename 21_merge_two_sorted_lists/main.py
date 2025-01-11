@@ -1,12 +1,9 @@
 # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-class Node:
-    def __init__(self, x):
-        self.data = x
-        self.next = None
+class ListNode(object):
+     def __init__(self, val=0, next=None):
+         self.val = val
+         self.next = next
+
 
 def mergeTwoLists(head1, head2):
     """
@@ -14,41 +11,37 @@ def mergeTwoLists(head1, head2):
     :type list2: Optional[ListNode]
     :rtype: Optional[ListNode]
     """
-    new_list = []
-    while head1 is not None:
-        new_list.append(head1.data)
-        head1=head1.next
-    
-    while head2 is not None:
-        new_list.append(head2.data)
-        head2 = head2.next
+    dummy = ListNode()
+    op = dummy
+    while head1 and head2:
+        if head1.val<head2.val:
+            op.next=head1
+            head1=head1.next
+        else:
+            op.next=head2
+            head2=head2.next
+        op = op.next
 
-    new_list.sort()
-    dummy = Node(-1)
-    curr = dummy
+    op.next = head1 if head1 else head2
+    return dummy.next
 
-    for value in new_list:
-        curr.next = Node(value)
-        curr = curr.next
-
-    return dummy.next 
 
 # Function to print the linked list
 def printList(curr):
     while curr is not None:
-        print(curr.data, end=" ")
+        print(curr.val, end=" ")
         curr = curr.next
     print()
 
 # First linked list: 5 -> 10 -> 15
-head1 = Node(5)
-head1.next = Node(10)
-head1.next.next = Node(15)
+head1 = ListNode(5)
+head1.next = ListNode(10)
+head1.next.next = ListNode(15)
 
 # Second linked list: 2 -> 3 -> 20
-head2 = Node(2)
-head2.next = Node(3)
-head2.next.next = Node(20)
+head2 = ListNode(2)
+head2.next = ListNode(3)
+head2.next.next = ListNode(20)
 
 res = mergeTwoLists(head1, head2)
 
