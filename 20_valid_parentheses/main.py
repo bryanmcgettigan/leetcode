@@ -1,5 +1,5 @@
 
-def isValid(self, s):
+def isValid( s):
     """
     :type s: str
     :rtype: bool
