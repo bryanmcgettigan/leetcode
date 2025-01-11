@@ -4,14 +4,13 @@ def twoSum(nums, target):
     :type target: int
     :rtype: List[int]
     """
-    indextwo=0
+    num_map = {}
     for index,num in enumerate(nums):
-        indextwo=index+1
-        for numtwo in nums[index+1:]:
-            if((numtwo+num)==target and (indextwo != index)):
-                return [index,indextwo] 
-            indextwo = indextwo+1
+        temp = target-num
+        if temp in num_map:
+            return[num_map[temp],index]
         
+        num_map[num] = index
    
 nums=[3,2,95,4,-3]
 
