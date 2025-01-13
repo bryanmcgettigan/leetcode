@@ -24,7 +24,7 @@ def isAnagram( s, t):
     return True
 
 
-s = "hello"
+s = "heldlo"
 t= "ollhse"
 
 print(isAnagram(s,t))
