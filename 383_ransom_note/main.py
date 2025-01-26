@@ -7,7 +7,6 @@ def canConstruct(ransomNote, magazine):
     hmap_mag = {}
     for char in magazine:
         hmap_mag[char] = hmap_mag.get(char,0)+1
-    print(hmap_mag)
 
     for char in ransomNote:
         if hmap_mag.get(char):
