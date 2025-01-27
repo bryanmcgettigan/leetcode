@@ -9,16 +9,22 @@ def reverseList(head):
     :type head: Optional[ListNode]
     :rtype: Optional[ListNode]
     """
+    stack = []
+    temp = head
+    
+    while temp.next:
+        stack.append(temp)
+        temp=temp.next
 
-    prev=None
-    curr = head
-    while curr:
-        next = curr.next
-        
-        curr.next=prev
-        prev=curr
-        curr=next
-    return prev
+    head = temp
+
+    while stack:
+        temp.next=stack.pop()
+        temp = temp.next
+
+    temp.next=None
+    return head
+    
 # Create the linked list
 values = [1, 2, 3, 4, 5]
 head = ListNode(values[0])
