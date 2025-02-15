@@ -39,4 +39,14 @@ t2 = TreeNode(val=2,left=t4)
 t3 = TreeNode(val=3,right=t5)
 t1 = TreeNode(val=1,left=t3,right=t2)
 
-print(isBalanced(t1))
+
+
+n = []
+for x in range(0,60):
+    n.append(80)
+n.append(0)
+
+
+print((sum(n)/len(n)))
+#print(isBalanced(t1))
+
