@@ -1,27 +1,25 @@
+
 class TreeNode(object):
      def __init__(self, val=0, left=None, right=None):
          self.val = val
          self.left = left
          self.right = right
 
+
 class Solution(object):
     def hasPathSum(self, root, targetSum):
+        if root:
+            if targetSum-root.val==0:
+                if not root.left and not root.right:
+                    return True
+            return self.hasPathSum(root.left,targetSum-root.val)or self.hasPathSum(root.right,targetSum-root.val)
+        return False
+            
 
-        if not root:
-            return False
-        
-        if not root.left and not root.right:
-            return targetSum == root.val
-        
-        left_sum = self.hasPathSum(root.left, targetSum - root.val)
-        right_sum = self.hasPathSum(root.right, targetSum - root.val)
-        
-        return left_sum or right_sum
-            
-        
-            
-            
-        
+
+
+
+
 
 
 def build_tree():
@@ -36,7 +34,7 @@ def build_tree():
     root.right.right.right = TreeNode(1)
     return root
 root = build_tree()
-targetSum=20
+targetSum=28
 solution = Solution()
 
 
