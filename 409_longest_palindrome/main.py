@@ -3,22 +3,19 @@ def longestPalindrome(s):
     :type s: str
     :rtype: int
     """
-    pLength = 0
-    singleUsed=False
-    if len(s)==1:
-        return 1
-    hmap = {}
-    for letter in s:
-        hmap[letter] = hmap.get(letter,0) + 1
-    for val in hmap:
-        if (hmap.get(val)%2==0):
-            pLength = pLength+hmap.get(val)
-        elif (hmap.get(val)==1 ) and not singleUsed:
-            pLength=pLength+1
-            singleUsed=True
-        else:
-             pLength = pLength+hmap.get(val)-1
-    return pLength
+    sum = 0
+    hmap={}
+    for char in s:
+        hmap[char] = hmap.get(char,0)+1
+        if hmap[char] % 2 ==0:
+            sum+=2
+    
+    for cnt in hmap.values():
+        if cnt%2:
+            sum+=1
+            break
 
 
-print(longestPalindrome("ccc"))
+    return  sum
+
+print(longestPalindrome("ababababa"))
